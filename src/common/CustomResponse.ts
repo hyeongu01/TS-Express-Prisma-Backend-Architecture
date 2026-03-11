@@ -1,3 +1,5 @@
+import * as z from "zod";
+
 type CustomResponse = {
     success: true,
     data?: any,
@@ -21,14 +23,15 @@ export const makeResponse = (params: MakeResponseParams): CustomResponse => {
     };
 }
 
-export type CustomErrorParams = {
-    statusCode: number
-    success: false
-    error: {
-        code: string;
-        message: string;
-    }
-};
+export const CustomErrorSchema = z.object({
+    statusCode: z.number().min(200).max(500),
+    success: z.boolean(),
+    error: z.object({
+        code: z.string(),
+        message: z.string(),
+    }),
+})
+export type CustomError = z.infer<typeof CustomErrorSchema>;
 
 /**
  * 표준 에러 생성 코드
@@ -36,7 +39,7 @@ export type CustomErrorParams = {
  * @param code
  */
 const makeError = (statusCode: number, code: string) => {
-    return (message: string = code) => ({
+    return (message: string = code): CustomError => ({
         statusCode,
         success: false,
         error: {
@@ -49,7 +52,7 @@ const makeError = (statusCode: number, code: string) => {
 /**
  * 표준 에러 객체 반환
  */
-export const CustomError = {
+export const customError = {
     UNAUTHORIZED: makeError(401, "UNAUTHORIZED"),
     BAD_REQUEST: makeError(400, "BAD_REQUEST"),
     NOT_FOUND: makeError(404, "NOT_FOUND"),

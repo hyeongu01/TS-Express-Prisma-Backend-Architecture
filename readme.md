@@ -63,7 +63,7 @@ npm install
 `.env` 파일을 프로젝트 루트에 생성합니다.
 
 ```env
-app="development"   # development | production
+APP="development"   # development | production
 
 DATABASE_URL=mysql://root:1234@localhost:3306/myDB
 DATABASE_HOST=localhost

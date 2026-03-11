@@ -21,7 +21,7 @@ interface Config {
 }
 
 const config: Config = {
-    app: process.env.app || "development",
+    app: process.env.APP || "development",
     db: {
         url: process.env.DATABASE_URL || "mysql://root:1234@localhost:3306/myDB",
         host: process.env.DATABASE_HOST || "localhost",
