@@ -100,3 +100,27 @@
 {"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 16:43:44"}
 {"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 16:43:45"}
 {"level":"info","message":"server is running!","timestamp":"2026-03-11 16:43:45"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:50:25"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:50:25"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:50:25"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:54:37"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:54:38"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:54:38"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:54:50"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:54:50"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:54:50"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:55:30"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:55:31"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:55:31"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:57:34"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:57:34"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:57:34"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:58:50"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:58:50"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:58:50"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:59:24"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:59:24"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:59:24"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-11 17:59:29"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-11 17:59:29"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-11 17:59:29"}
