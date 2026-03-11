@@ -1,0 +1,39 @@
+{
+  "name": "ts-express-prisma-backend-architecture",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "dev": "nodemon --exec tsx src/server.ts",
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/hyeongu01/TS-Express-Prisma-Backend-Architecture.git"
+  },
+  "keywords": [],
+  "author": "hyeonwoo choi",
+  "license": "ISC",
+  "type": "module",
+  "bugs": {
+    "url": "https://github.com/hyeongu01/TS-Express-Prisma-Backend-Architecture/issues"
+  },
+  "homepage": "https://github.com/hyeongu01/TS-Express-Prisma-Backend-Architecture#readme",
+  "dependencies": {
+    "@prisma/adapter-mariadb": "^7.4.2",
+    "@prisma/client": "^7.4.2",
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "redis": "^5.11.0",
+    "swagger-ui-express": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/express": "^5.0.6",
+    "@types/node": "^25.4.0",
+    "@types/swagger-ui-express": "^4.1.8",
+    "nodemon": "^3.1.14",
+    "prisma": "^7.4.2",
+    "tsx": "^4.21.0",
+    "typescript": "^5.9.3"
+  }
+}
