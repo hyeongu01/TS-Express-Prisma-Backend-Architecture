@@ -13,6 +13,11 @@ interface Config {
     redis: {
         url: string;
     },
+    naver?: {
+        clientId: string,
+        clientSecret: string,
+        redirectUri: string,
+    }
 }
 
 const config: Config = {
@@ -29,5 +34,12 @@ const config: Config = {
         url: process.env.REDIS_URL || "redis://:@localhost:6379",
     },
 }
+
+if (process.env.NAVER_CLIENT_ID && process.env.NAVER_CLIENT_SECRET)
+    config.naver = {
+        clientId: process.env.NAVER_CLIENT_ID,
+        clientSecret: process.env.NAVER_CLIENT_SECRET,
+        redirectUri: process.env.NAVER_REDIRECT_URI || "http://localhost:3000/auth/naver/callback",
+    };
 
 export default config;

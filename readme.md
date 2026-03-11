@@ -73,6 +73,10 @@ DATABASE_PASSWORD=1234
 DATABASE_NAME=myDB
 
 REDIS_URL=redis://:@localhost:6379
+
+# Naver Config
+NAVER_CLIENT_ID="..."
+NAVER_CLIENT_SECRET="..."
 ```
 
 ### 3. Prisma 설정

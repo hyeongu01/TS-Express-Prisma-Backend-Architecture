@@ -1,10 +1,13 @@
 import express from "express";
 import type {Request, Response, NextFunction} from "express";
+import swaggerUi from "swagger-ui-express";
+import swaggerSpec from "@libs/swagger";
 import router from "./features";
 
 
 const app = express();
 app.use(express.json());
+app.use("/docs", swaggerUi.serve, swaggerUi.setup(swaggerSpec));
 
 app.use("/", router);
 
