@@ -1,8 +1,9 @@
 import express from "express";
-import authRouter from "./auth/auth.router";
 
 const router = express.Router();
 
-router.use("/auth", authRouter);
+// router.post("/login")
+// router.post("/refresh")
+// router.post("/logout")
 
 export default router;
