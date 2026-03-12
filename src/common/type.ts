@@ -1,3 +1,6 @@
+import {Request} from "express";
+import {User} from "@features/users/users.dto";
+
 export const AuthProvider = {
     NAVER: "NAVER",
     // GOOGLE: "GOOGLE",
@@ -16,3 +19,6 @@ export const AccountType = {
     INVESTMENT: 2
 }
 
+export interface AuthRequest extends Request {
+    user: User;
+}

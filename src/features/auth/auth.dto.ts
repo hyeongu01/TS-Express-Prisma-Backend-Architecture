@@ -40,10 +40,3 @@ export const CreateUserParamsSchema = z.object({
     providerId: z.string(),
 })
 export type CreateUserParams = z.infer<typeof CreateUserParamsSchema>;
-
-// POST /auth/naver/login 요청 body
-export const NaverLoginBodySchema = z.object({
-    authCode: z.string().length(26),
-    deviceId: z.string().uuid(),
-});
-export type NaverLoginBody = z.infer<typeof NaverLoginBodySchema>;

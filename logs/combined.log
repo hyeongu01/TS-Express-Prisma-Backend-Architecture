@@ -247,3 +247,6 @@
 {"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-12 12:59:22"}
 {"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-12 12:59:22"}
 {"level":"info","message":"server is running!","timestamp":"2026-03-12 12:59:22"}
+{"level":"info","message":"[DB] Connecting to DB: localhost:3306","timestamp":"2026-03-12 13:02:25"}
+{"level":"info","message":"[DB] Initialized DBModel","timestamp":"2026-03-12 13:02:25"}
+{"level":"info","message":"server is running!","timestamp":"2026-03-12 13:02:25"}
