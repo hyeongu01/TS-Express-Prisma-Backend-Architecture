@@ -3,7 +3,11 @@ import {LoginParams, LoginResponse, NaverLoginParams, NaverProfile, NaverProfile
 import {customError} from "@common/CustomResponse";
 import axios from "axios";
 import * as repository from "./auth.repository";
-import {getUserByProvider} from "./auth.repository";
+import {AuthProvider} from "@common/type";
+import {User} from "@features/users/users.dto";
+import { encodeJWT } from "@common/auth/jwt";
+import {ulid} from "ulid";
+import {createHash} from "crypto";
 
 export const naverLogin = async (params: NaverLoginParams): Promise<LoginResponse> => {
     // code, state 분리
@@ -39,7 +43,7 @@ export const naverLogin = async (params: NaverLoginParams): Promise<LoginRespons
 
     const loginParams: LoginParams = {
         providerId: profile.id,
-        provider: "NAVER",
+        provider: AuthProvider.NAVER,
         name: profile.name,
         birthDate: (() => {
             const date = new Date(`${profile.birthyear}-${profile.birthday}`);
@@ -51,6 +55,16 @@ export const naverLogin = async (params: NaverLoginParams): Promise<LoginRespons
 }
 
 async function login(params: LoginParams): Promise<LoginResponse> {
-    const user = await repository.getUserByProvider(params.provider, params.providerId)
+    const result: User | null = await repository.getUserByProvider(params.provider, params.providerId);
+    const user: User = result ? result : await repository.createUser(params);
+
+    const deviceId = ulid();
+    const tokens = encodeJWT(user.id, deviceId);
+    const hashedRefreshToken = createHash("sha256")
+        .update(tokens.refreshToken)
+        .digest("hex");
+
+    await repository.createRefreshToken(user.id, hashedRefreshToken, deviceId);
+    return tokens;
 }
 

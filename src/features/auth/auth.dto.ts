@@ -30,3 +30,20 @@ export const LoginParamsSchema = z.object({
 });
 export type LoginParams = z.infer<typeof LoginParamsSchema>;
 
+
+export const CreateUserParamsSchema = z.object({
+    name: z.string(),
+    timezone: z.string().optional(),
+    currency: z.string().length(3).optional(),
+    birthDate: z.date().optional(),
+    provider: z.string().uppercase(),
+    providerId: z.string(),
+})
+export type CreateUserParams = z.infer<typeof CreateUserParamsSchema>;
+
+// POST /auth/naver/login 요청 body
+export const NaverLoginBodySchema = z.object({
+    authCode: z.string().length(26),
+    deviceId: z.string().uuid(),
+});
+export type NaverLoginBody = z.infer<typeof NaverLoginBodySchema>;

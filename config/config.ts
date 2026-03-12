@@ -1,3 +1,4 @@
+import logger from "@libs/logger";
 import "dotenv/config";
 
 interface Config {
@@ -12,6 +13,14 @@ interface Config {
     },
     redis: {
         url: string;
+    },
+    jwt: {
+        accessSecret: string;
+        refreshSecret: string;
+        accessExpiresIn: `${number}${"s" | "m" | "h" | "d"}`;
+        accessExpiresMS: number;
+        refreshExpiresIn: `${number}${"s" | "m" | "h" | "d"}`;
+        refreshExpiresMS: number;
     },
     naver?: {
         clientId: string,
@@ -33,7 +42,18 @@ const config: Config = {
     redis: {
         url: process.env.REDIS_URL || "redis://:@localhost:6379",
     },
+    jwt: {
+        accessSecret: process.env.JWT_ACCESS_SECRET || "access secret",
+        refreshSecret: process.env.JWT_REFRESH_SECRET || "refresh secret",
+        accessExpiresIn: "1h",
+        accessExpiresMS: 1000 * 3600,
+        refreshExpiresIn: "7d",
+        refreshExpiresMS: 1000 * 3600 * 24 * 7,
+    }
 }
+
+if (!process.env.JWT_ACCESS_SECRET || !process.env.JWT_REFRESH_SECRET)
+    logger.warn("Jwt secret not defined");
 
 if (process.env.NAVER_CLIENT_ID && process.env.NAVER_CLIENT_SECRET)
     config.naver = {
