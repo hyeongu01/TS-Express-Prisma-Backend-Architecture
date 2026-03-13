@@ -1,6 +1,6 @@
 # TS-Express-Prisma Backend Template
 
-TypeScript + Express + Prisma 기반 백엔드 프로젝트 템플릿입니다.
+TypeScript + Express + Prisma 기반 백엔드 프로젝트 템플릿입니다.  
 반복적인 프로젝트 초기 설정 없이 바로 기능 개발에 집중할 수 있습니다.
 
 ## Tech Stack
