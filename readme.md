@@ -5,19 +5,19 @@ TypeScript + Express + Prisma 기반 백엔드 프로젝트 템플릿입니다.
 
 ## Tech Stack
 
-| 분류 | 기술 |
-|------|------|
-| Runtime | Node.js v25+ (ES Module) |
-| Language | TypeScript 5.x (Strict Mode) |
-| Framework | Express 5.x |
-| ORM | Prisma 7.x (MariaDB Adapter) |
-| Database | MySQL / MariaDB |
-| Cache | Redis |
+| 분류 | 기술                                      |
+|------|-----------------------------------------|
+| Runtime | Node.js v25+ (ES Module)                |
+| Language | TypeScript 5.x (Strict Mode)            |
+| Framework | Express 5.x                             |
+| ORM | Prisma 7.x (MariaDB Adapter)            |
+| Database | MySQL / MariaDB                         |
+| Cache | Redis                                   |
 | Auth | Passport + JWT, OAuth 2.0 (Naver 예시 포함) |
-| Validation | Zod |
-| Logging | Winston |
-| API Docs | Swagger UI |
-| ID 생성 | ULID |
+| Validation | Zod                                     |
+| Logging | Winston, Morgan                         |
+| API Docs | Swagger UI                              |
+| ID 생성 | ULID                                    |
 
 ## 시작하기
 
@@ -182,7 +182,6 @@ router.use("/post", postRouter);
 **에러**
 ```json
 {
-  "statusCode": 400,
   "success": false,
   "error": {
     "code": "BAD_REQUEST",
@@ -212,10 +211,22 @@ router.use("/post", postRouter);
 
 ## 로깅
 
-Winston 기반으로 설정되어 있습니다.
+Winston + Morgan 기반으로 설정되어 있습니다.
 
-- **콘솔**: 컬러 + 타임스탬프
-- **파일**: `logs/error.log` (에러만), `logs/combined.log` (전체)
+### Winston (`src/libs/logger.ts`)
+
+로그 레벨: `http` 이상 기록 | 포맷: `[YYYY-MM-DD HH:mm:ss] level: message`
+
+| 출력 대상 | 설명 | 포맷 |
+|-----------|------|------|
+| 콘솔 | 모든 로그 | 컬러 + 타임스탬프 |
+| `logs/error.log` | `error` 레벨만 | JSON + 타임스탬프 |
+| `logs/combined.log` | 전체 로그 | JSON + 타임스탬프 |
+
+### Morgan (`src/app.ts`)
+
+HTTP 요청 로그를 Morgan(`dev` 포맷)으로 수집하고, Winston의 `http` 레벨로 전달합니다.
+ANSI 컬러 코드는 자동으로 제거되어 파일 로그에 깔끔하게 기록됩니다.
 
 ## License
 
