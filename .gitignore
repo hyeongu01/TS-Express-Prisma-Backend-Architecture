@@ -3,6 +3,8 @@
 .claude
 claude.md
 
+logs
+
 node_modules
 
 .env
