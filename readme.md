@@ -19,12 +19,54 @@ TypeScript + Express + Prisma 기반 백엔드 프로젝트 템플릿입니다.
 | API Docs | Swagger UI                              |
 | ID 생성 | ULID                                    |
 
+## 브랜치별 Validation 라이브러리
+
+이 템플릿은 검증 라이브러리에 따라 브랜치가 분리되어 있습니다.
+
+| 브랜치 | Validation | 설명 |
+|--------|------------|------|
+| `main` | Zod | 기본 브랜치 (Zod 기반) |
+| `validator/zod` | Zod | Zod 전용 브랜치 |
+| `validator/ajv` | AJV (+ ajv-formats) | AJV 전용 브랜치 |
+
+### 특정 브랜치로 시작하기
+
+```bash
+# Zod 버전 (기본)
+git clone https://github.com/hyeongu01/TS-Express-Prisma-Backend-Architecture.git my-project
+
+# AJV 버전
+git clone -b validator/ajv https://github.com/hyeongu01/TS-Express-Prisma-Backend-Architecture.git my-project
+```
+
+### 기존 클론에서 브랜치 전환
+
+```bash
+git fetch origin
+git checkout validator/ajv   # AJV 버전으로 전환
+git checkout validator/zod   # Zod 버전으로 전환
+```
+
+### 브랜치별 주요 차이
+
+| | `validator/zod` | `validator/ajv` |
+|--|-----------------|-----------------|
+| DTO 정의 | Zod 스키마 + `z.infer` 타입 추론 | `interface` + `JSONSchemaType` + `ajv.compile` |
+| 검증 방식 | `schema.safeParse(data)` | `validate(data)` (boolean 반환) |
+| Swagger 재사용 | 별도 스키마 작성 필요 | JSON Schema 그대로 재사용 가능 |
+| 설정 파일 | 없음 (zero-config) | `src/libs/ajv.ts` |
+
 ## 시작하기
 
 ### 1. 템플릿 복제
 
 ```bash
+# 기본(Zod) 버전
 git clone https://github.com/hyeongu01/TS-Express-Prisma-Backend-Architecture.git my-project
+
+# 또는 AJV 버전
+git clone -b validator/ajv https://github.com/hyeongu01/TS-Express-Prisma-Backend-Architecture.git my-project
+
 cd my-project
 rm -rf .git
 git init
