@@ -1,4 +1,5 @@
 import {OpenAPIV3} from "openapi-types";
+import {LoginResponseSchema} from "@features/auth/auth.dto";
 
 const TAG_NAME = "01. Auth";
 
@@ -116,13 +117,7 @@ const authPaths: OpenAPIV3.PathsObject = {
                                 type: "object",
                                 properties: {
                                     success: {type: "boolean"},
-                                    data: {
-                                        type: "object",
-                                        properties: {
-                                            accessToken: {type: "string"},
-                                            refreshToken: {type: "string"},
-                                        }
-                                    }
+                                    data: LoginResponseSchema as OpenAPIV3.SchemaObject,
                                 }
                             }
                         }

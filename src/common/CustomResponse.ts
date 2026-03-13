@@ -1,12 +1,7 @@
-import * as z from "zod";
+import ajv, { type JSONSchemaType } from "@libs/ajv.js";
 
-type CustomResponse = {
+interface CustomResponse {
     success: true,
-    data?: any,
-    meta?: any,
-};
-
-type MakeResponseParams = {
     data?: any,
     meta?: any,
 }
@@ -15,7 +10,7 @@ type MakeResponseParams = {
  * 표준 성공 응답 코드
  * @param params
  */
-export const makeResponse = (params: MakeResponseParams): CustomResponse => {
+export const makeResponse = (params: {data?: any, meta?: any}): CustomResponse => {
     return {
         success: true,
         data: params.data,
@@ -23,15 +18,43 @@ export const makeResponse = (params: MakeResponseParams): CustomResponse => {
     };
 }
 
-export const CustomErrorSchema = z.object({
-    statusCode: z.number().min(200).max(500),
-    success: z.boolean(),
-    error: z.object({
-        code: z.string(),
-        message: z.string(),
-    }),
-})
-export type CustomError = z.infer<typeof CustomErrorSchema>;
+interface CustomErrorBody {
+    statusCode: number;
+    success: boolean;
+    error: {
+        code: string;
+        message: string;
+    };
+}
+export const CustomErrorSchema: JSONSchemaType<CustomErrorBody> = {
+    type: "object",
+    properties: {
+        statusCode: { type: "number", minimum: 200, maximum: 500 },
+        success: { type: "boolean" },
+        error: {
+            type: "object",
+            properties: {
+                code: { type: "string" },
+                message: { type: "string" },
+            },
+            required: ["code", "message"],
+            additionalProperties: false,
+        },
+    },
+    required: ["statusCode", "success", "error"],
+    additionalProperties: false,
+};
+export const validateCustomError = ajv.compile(CustomErrorSchema);
+
+export interface CustomError {
+    statusCode: number,
+    success: boolean,
+    error: {
+        code: string,
+        message: string,
+        details?: any
+    }
+}
 
 /**
  * 표준 에러 생성 코드

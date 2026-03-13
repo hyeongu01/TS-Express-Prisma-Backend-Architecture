@@ -14,7 +14,7 @@ TypeScript + Express + Prisma 기반 백엔드 프로젝트 템플릿입니다.
 | Database | MySQL / MariaDB                         |
 | Cache | Redis                                   |
 | Auth | Passport + JWT, OAuth 2.0 (Naver 예시 포함) |
-| Validation | Zod                                     |
+| Validation | AJV (+ ajv-formats)                     |
 | Logging | Winston, Morgan                         |
 | API Docs | Swagger UI                              |
 | ID 생성 | ULID                                    |
@@ -107,6 +107,7 @@ npm run dev
 │   │   └── type.ts             # 공유 타입
 │   ├── features/               # 기능별 모듈 (아래 설명)
 │   └── libs/                   # 라이브러리
+│       ├── ajv.ts              # AJV 인스턴스 및 설정
 │       ├── logger.ts           # Winston 로거
 │       ├── model.ts            # DB 초기화
 │       ├── redis.ts            # Redis 클라이언트
@@ -130,7 +131,7 @@ Router → Controller → Service → Repository → Prisma (DB)
 | `*.controller.ts` | 요청 처리 |
 | `*.service.ts` | 비즈니스 로직 |
 | `*.repository.ts` | 데이터 접근 (Prisma) |
-| `*.dto.ts` | Zod 기반 입출력 검증 |
+| `*.dto.ts` | AJV JSON Schema 기반 입출력 검증 |
 | `*.swagger.ts` | OpenAPI 문서 정의 |
 
 ### 새 Feature 추가하기
