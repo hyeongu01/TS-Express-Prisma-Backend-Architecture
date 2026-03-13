@@ -66,7 +66,7 @@ NAVER_REDIRECT_URI="http://localhost:3000/auth/naver/callback"
 
 ### 4. DB 스키마 정의
 
-`prisma/schema.prisma`에서 프로젝트에 맞게 모델을 정의합니다.
+`prisma/schema.prisma`에서 프로젝트에 맞게 모델을 정의합니다.  
 템플릿에는 가계부 앱 예시 스키마(user, account, transaction 등)가 포함되어 있으니 참고하거나 교체하세요.
 
 ```bash
@@ -225,12 +225,12 @@ Winston + Morgan 기반으로 설정되어 있습니다.
 
 ### Morgan (`src/app.ts`)
 
-HTTP 요청 로그를 Morgan(`dev` 포맷)으로 수집하고, Winston의 `http` 레벨로 전달합니다.
+HTTP 요청 로그를 Morgan(`dev` 포맷)으로 수집하고, Winston의 `http` 레벨로 전달합니다.  
 ANSI 컬러 코드는 자동으로 제거되어 파일 로그에 깔끔하게 기록됩니다.
 
 ## License
 
-작성자: 최현우
-라이센스: ISC
+- 작성자: 최현우
+- 라이센스: ISC
 
 > 자유롭게 사용하시고 제안사항 있으면 이메일로 연락주세요!
